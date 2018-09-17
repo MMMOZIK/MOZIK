@@ -1,0 +1,11 @@
+<!--授权弹窗-->
+<template name="vqd_author">
+  <view class='authorbg' wx:if="{{userInfo && !userInfo.avatarUrl}}" hidden='{{chooseAuthor}}'>
+    <view class='author_box'>
+      <view class='author_tit'>授权提示</view>
+      <view class='author_tip'>小程序申请获得以下权限：</view>
+      <view class='author_get'><text>·</text>获得你的公开信息（昵称、头像等）</view>
+      <button class='author_btn' open-type='getUserInfo' lang='zh_CN' bindgetuserinfo="getuserinfo" catchtap='clickAuthor'>允许</button>
+    </view>
+  </view>
+</template>

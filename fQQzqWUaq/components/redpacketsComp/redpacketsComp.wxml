@@ -1,0 +1,7 @@
+<view class="share-goods-bg" hidden="{{!showRed}}" catchtap="closeShare"></view>
+<view class="red-packet-box" hidden="{{!showRed}}">
+  <view class="pull-btn" catchtap="clickDismantl"></view>
+  <view class="close_shopdetail" catchtap="closeRed">
+    <image src="https://v.iegret.com/static/user/images/close_red.png"></image>
+  </view>
+</view>

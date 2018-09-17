@@ -1,0 +1,73 @@
+<view class="besp-list">
+  <view class="bespcou-head">
+    <view class="{{status==0?'select':''}}" style="margin-left:30px;" catchtap="selbespCoupon" data-num='0'>全部</view>
+    <view class="{{status==1?'select':''}}" style="margin-left:53px;" catchtap="selbespCoupon" data-num='1'>未使用</view>
+    <view class="{{status==2?'select':''}}" style="margin-left:21px;" catchtap="selbespCoupon" data-num='2'>已过期/已使用</view>
+  </view>
+  <scroll-view scroll-y="true" class="bespcoup-list" bindscrolltolower="loadmoreCoupon">
+    <block wx:if="{{couponArr.length>0}}">
+      <block wx:for="{{couponArr}}" wx:key="{{item}}">
+        <view class="bespcou-item clearfix {{item.is_use!=0?'overdue':''}}" data-cid="{{item.id}}" catchtap="goToCouponDetail">
+          <view class="dispatch-coupon-left">
+            <text class="dispatch-reduce-icon">￥</text>
+            <text class="dispatch-reduce-money">{{item.reduce}}</text>
+          </view>
+          <view class="dispatch-coupon-right">
+            <view class="dispatch-reduce-top">
+              <text>满{{item.full}}减{{item.reduce}}</text>
+            </view>
+            <view class="dispatch-reduce-bottom">
+              <view class="dispatch-reduce-tip">{{item.useStoreStr}}</view>
+              <view class="dispatch-reduce-tip">{{item.is_use==1?'使用时间':'有效期至'}}{{item.endtime}}</view>
+            </view>
+            <view class="dispatch-reduce-type">
+              <block wx:if="{{item.belong_type==1}}">
+                <block wx:if="{{item.is_use==0}}">
+                  <image src="http://v.iegret.com/static/user/images/coupontype2.png" />
+                </block>
+                <block wx:else>
+                  <image src="http://v.iegret.com/static/user/images/coupontype2_nouse.png" />
+                </block>
+              </block>
+              <block wx:elif="{{item.belong_type==2}}">
+                <block wx:if="{{item.is_use==0}}">
+                  <image src="http://v.iegret.com/static/user/images/coupontype3.png" />
+                </block>
+                <block wx:else>
+                  <image src="http://v.iegret.com/static/user/images/coupontype3_nouse.png" />
+                </block>
+              </block>
+              <block wx:else>
+                <block wx:if="{{item.is_use==0}}">
+                  <image src="http://v.iegret.com/static/user/images/coupontype1.png" />
+                </block>
+                <block wx:else>
+                  <image src="http://v.iegret.com/static/user/images/coupontype1_nouse.png" />
+                </block>
+              </block>
+            </view>
+            <block wx:if="{{item.is_use!=0}}">
+              <view class="dispatch-reduce-overdue">
+                <block wx:if="{{item.is_use==1}}">
+                  <image src="http://v.iegret.com/static/user/images/coupon_used.png" />
+                </block>
+                <block wx:else>
+                  <image src="http://v.iegret.com/static/user/images/coupon_overdue.png" />
+                </block>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class="nothing-order" hidden="{{!nothing}}">暂无相关内容，再找找吧！</view>
+    </block>
+  </scroll-view>
+  <view class="expire_limit" hidden="{{vqdlevel!=1000}}">
+    <text>高级版即可体验，请到后台升级。</text>
+  </view>
+  <view class="expire_limit" hidden="{{vqdlevel!=2000}}">
+    <text>进阶版或高级版即可体验，请到后台升级。</text>
+  </view>
+</view>

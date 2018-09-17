@@ -1,0 +1,6 @@
+<view class="app"><view class="ele-container" style="z-index: 10;"><redpacketscomp showRed="{{showRed}}" redid="{{redid || 0}}" redcode="{{redcode || 0}}"></redpacketscomp></view><import src="../../components/template.wxml"/><import src="../../components/authod.wxml"/><template is="vqd_author" data="{{userInfo:userInfo,chooseAuthor:chooseAuthor}}"></template><template is="expire" data="{{data:expire}}"></template><view class="ele-container" style="position:inherit!important;">
+                          <template is="vqdNewUserCenter" data="{{data:newpersonal1,userInfo:userInfo,total:total,sign:sign,signintegral:signintegral,integralpromit:integralpromit,promitTitle:promitTitle,showNcardBg:showNcardBg,showNcard:showNcard,ncardmsg:ncardmsg,disgrade:disgrade,isset:isset,dislevel:dislevel}}"></template>
+                     </view>
+                     <view class="ele-container">
+						  <template is="vqdComment" data="{{data:comment3}}"></template>
+					 </view></view>
